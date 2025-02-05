@@ -4,10 +4,11 @@ import { useScoreStore } from '@/stores/score'
 
 const scoreStore = useScoreStore()
 
-const onClick = (event) => {
+const onClick = (event: MouseEvent) => {
   scoreStore.incrementScore()
-  event.target.style.top = `${Math.random() * 90}%`
-  event.target.style.left = `${Math.random() * 90}%`
+  const target = event.target as HTMLElement
+  target.style.top = `${Math.random() * 90}%`
+  target.style.left = `${Math.random() * 90}%`
 }
 </script>
 
@@ -24,7 +25,7 @@ const onClick = (event) => {
         <h1 class="text-5xl text-white">Game Over</h1>
         <p class="text-white font-bold text-xl">{{ scoreStore.score }}</p>
         <button
-          @click="scoreStore.resetTimer"
+          @click="scoreStore.resetGame"
           class="p-2 px-4 rounded bg-green-700 text-white hover:bg-green-600 transition-all duration-300 cursor-pointer"
         >
           Play Again
